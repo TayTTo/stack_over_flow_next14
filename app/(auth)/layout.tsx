@@ -1,5 +1,4 @@
 import React from "react";
-import { ClerkProvider } from "@clerk/nextjs";
 
 export default function RootLayout({
   children,
@@ -11,9 +10,9 @@ export default function RootLayout({
       <head>
         <title>Next.js 13 with Clerk</title>
       </head>
-      <ClerkProvider>
-        <body>{children}</body>
-      </ClerkProvider>
+      {/* <ClerkProvider> */}
+      <body>{children}</body>
+      {/* </ClerkProvider> */}
     </html>
   );
 }
