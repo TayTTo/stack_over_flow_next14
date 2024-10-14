@@ -1,13 +1,11 @@
 import {
   ClerkProvider,
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
 } from "@clerk/nextjs";
 import "./globals.css";
-import {Inter, Space, Grotesk, Space_Grotesk} from 'next/font/google';
+import {Inter, Space_Grotesk} from 'next/font/google';
 import type { Metadata } from "next";
+import React from "react";
+import {ThemeProvider} from "@/context/ThemeProvider";
 
 const inter = Inter({
   subsets: ['latin'],
@@ -35,21 +33,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider
-        appearance={{
-          elements: {
-            formButtonPrimary: 'primary-gradient',
-            footerActionLink: 'primary-text-gradien hover:text-primary-500',
-          }
-        }}
-    >
       <html lang="en">
-        <body>
-          <main className={`${inter.variable} ${spaceGrotesk.variable}`}>
-            {children}
-          </main>
-        </body>
-      </html>
-    </ClerkProvider>
-  );
+      <body>
+      <main className={`${inter.variable} ${spaceGrotesk.variable}`}>
+          <ClerkProvider
+              appearance={{
+                  elements: {
+                      formButtonPrimary: 'primary-gradient',
+                      footerActionLink: 'primary-text-gradien hover:text-primary-500',
+                  }
+              }}
+          >
+              <ThemeProvider>
+                  {children}
+              </ThemeProvider>
+          </ClerkProvider>
+      </main>
+      </body>
+</html>
+)
+    ;
 }
