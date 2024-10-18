@@ -21,9 +21,9 @@ export  function ThemeProvider({children} : {children: React.ReactNode}) {
             document.documentElement.classList.remove('dark');
         }
     }
-    useEffect(() => {
-        handleThemeChange();
-    }, [mode]);
+    // useEffect(() => {
+    //     handleThemeChange();
+    // }, [mode]);
     return(
         <ThemeContext.Provider value = {{mode, setMode}}>
             {children}
